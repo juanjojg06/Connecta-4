@@ -7,8 +7,20 @@ int columna= 6;
 boolean NOganoJugador1 = true;
     boolean NOEstaCompleto = true;
     int tabla[][] = new int[columna][fila];
+    int turno= 0;
 
-    int largoTablero = tabla.length;
+ public int cambioTurno ( ){
+
+     int jugador;
+
+
+     if (turno % 2 == 0){
+         jugador = 1;
+     }else {
+         jugador = 2;
+     }
+     return jugador;
+ }
 
     public int[][] imprimirTablero(){
 
@@ -48,9 +60,16 @@ boolean NOganoJugador1 = true;
 
     }
 
-    public void colocarFicha(int [][] tablero,int poci  ){
+    public void colocarFicha(int [][] tablero,int poci ,   int cambioTurno ){
         System.out.println();
-        tablero[5][poci] = 1;
+
+        int jugador = cambioTurno;
+        if (jugador == 1){
+            tablero[5][poci] = 1;
+        }else {
+            tablero[5][poci] = 2;
+        }
+
 
 
         for (int i = 0; i < tabla.length; i++) {
@@ -100,7 +119,9 @@ boolean NOganoJugador1 = true;
        imprimirTablero();
         while (NOganoJugador1|| NOEstaCompleto ) {
 
-            colocarFicha(tabla,tirarFicha());
+            colocarFicha(tabla,tirarFicha(),cambioTurno());
+
+            turno++;
         }
 
     }
