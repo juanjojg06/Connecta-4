@@ -64,14 +64,24 @@ boolean NOganoJugador1 = true;
         System.out.println();
 
         int jugador = cambioTurno;
-        if (jugador == 1){
-            tablero[5][poci] = 1;
-        }else {
-            tablero[5][poci] = 2;
+        int ColumnaTem = columna-1;
+
+        for (int i = ColumnaTem ; i > 0 ; i--) {
+            if (tablero[i][poci] == 0) {
+
+                if (jugador == 1) {
+
+
+                    tablero[i][poci] = 1;
+
+
+                } else {
+                    tablero[i][poci] = 2;
+                }
+                break;
+            }
+
         }
-
-
-
         for (int i = 0; i < tabla.length; i++) {
 
 
