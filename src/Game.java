@@ -4,11 +4,12 @@ public class Game {
     Scanner sc = new Scanner(System.in);
 int fila = 7;
 int columna= 6;
-
-
+boolean NOganoJugador1 = true;
+    boolean NOEstaCompleto = true;
     int tabla[][] = new int[columna][fila];
 
     int largoTablero = tabla.length;
+
     public int[][] imprimirTablero(){
 
         for (int i = 0; i < tabla.length; i++){
@@ -33,7 +34,7 @@ int columna= 6;
             System.out.println("Pon un numero ");
             poci = sc.nextInt();
 
-            if (poci >= largoTablero && poci > 0) {
+            if (poci >= fila && poci > 0) {
 
                 System.out.println("Pon un numero valido");
                 esInvalido = true;
@@ -47,27 +48,31 @@ int columna= 6;
 
     }
 
-    public void colocarFicha(){
-
-
-    }
-
-
-
-    public void jugador1(int [][] tablero ,int poci  ){
-
+    public void colocarFicha(int [][] tablero,int poci  ){
         System.out.println();
         tablero[5][poci] = 1;
-        for (int i = 0; i < tabla.length; i++){
 
 
-            for (int j = 0; j < tabla[i].length; j++){
+        for (int i = 0; i < tabla.length; i++) {
+
+
+            for (int j = 0; j < tabla[i].length; j++) {
 
                 System.out.print(tabla[i][j] + " ");
 
             }
             System.out.println();
         }
+
+
+    }
+
+
+
+    public void jugador1( ){
+       NOganoJugador1 = false;
+
+
 
 
 
@@ -92,11 +97,14 @@ int columna= 6;
 
 
     public void main(){
-       // imprimirTablero();
-       jugador1(imprimirTablero(),tirarFicha());
+       imprimirTablero();
+        while (NOganoJugador1|| NOEstaCompleto ) {
 
+            colocarFicha(tabla,tirarFicha());
+        }
 
     }
+
 
 
     /*
